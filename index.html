@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chapter One</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1A1C1E;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+
+        }
+
+        /* 1. HERO SECTION (BAGIAN ATAS) */
+        .hero {
+            background: url(https://i.pinimg.com/1200x/62/3b/39/623b39f03d312ce6b8f33d213ac806d5.jpg);
+            color: white;
+            padding: 60px 0 100px 0;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        /* 2. STICKY NAV */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            z-index: 1000;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 32px;
+        }
+
+        .tab-link {
+            padding: 20px 0;
+            text-decoration: none;
+            color: #64748B;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-link.active {
+            color: #0052CC;
+            border-bottom-color: #0052CC;
+        }
+
+        .nav-price {
+            text-align: right;
+        }
+
+        .nav-price p {
+            font-size: 11px;
+            color: #64748B;
+        }
+
+        .nav-price h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* 3. MAIN CONTENT LAYOUT */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 40px;
+            margin-top: 40px;
+            padding-bottom: 100px;
+            align-items: start;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #002060;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .desc-text {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* TICKET BOX STYLING */
+        .ticket-group {
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .ticket-group-header {
+            padding: 20px;
+            background: #F8FAFC;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ticket-group-header h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1C1E;
+        }
+
+        .ticket-variant {
+            padding: 16px 20px;
+            border-bottom: 1px solid #F1F5F9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ticket-variant:last-child {
+            border-bottom: none;
+        }
+
+        .btn-buy {
+            background: #0052CC;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .badge-available {
+            background: #DCFCE7;
+            color: #166534;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        /* SIDEBAR STICKY */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .floating-card {
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            overflow: hidden;
+        }
+
+        .floating-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .org-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #F1F5F9;
+        }
+
+        .org-logo {
+            width: 36px;
+            height: 36px;
+            background: #000;
+            border-radius: 50%;
+            color: white;
+            font-size: 8px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Budi Luhur-Fest</h1>
+            <div class="meta-row">📍 <span>Universitas Budi Luhur</span></div>
+            <div class="meta-row">📅 <span>21 Juni 2026</span></div>
+            <div class="meta-row">🎡 <span>Hiburan • Konser</span></div>
+        </div>
+    </header>
+
+    <nav class="sticky-nav">
+        <div class="container nav-inner">
+            <div class="tabs">
+                <a href="#desc" class="tab-link">Deskripsi</a>
+                <a href="#ticket" class="tab-link active">Tiket</a>
+                <a href="#snk" class="tab-link">Syarat</a>
+            </div>
+            <div class="nav-price">
+                <p>Harga mulai dari</p>
+                <h3>Rp85.000</h3>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-layout">
+
+            <div class="left-side">
+
+                <section id="desc">
+                    <h2 class="section-title">Deskripsi</h2>
+                    <div class="desc-text">
+                        Konser musik Budi Luhur-Fest adalah acara hiburan yang merupakan program kerja sama antara
+                        The Chapter One dengan Universitas Budi Luhur. Acara ini dianggapp sebagai acara tahunan Universitas Budi Luhur. Dengan dukungan dari pihak sponsor: Teh Pucuk, Le Mineral, Good Day, Wow Spaghetti, Dimsum Bermentai.
+                    </div>
+                </section>
+
+                <section id="ticket">
+                    <h2 class="section-title">🎫 Tiket</h2>
+
+                    <div class="ticket-group">
+                        <div class="ticket-group-header">
+                            <div>
+                                <h4 style="color: #0369A1;">SPESIAL</h4>
+                                <p style="font-size: 12px; color: #0369A1;">Terbuka untuk semua kalangan</p>
+                            </div>
+                            <button class="btn-buy" style="background: #0EA5E9;">Beli Tiket</button>
+                        </div>
+                        <div class="ticket-variant">
+                            <div>
+                                <p style="font-weight: 700;">Rp95.000 (EARLY BIRD)</p>
+                                <p style="font-size: 12px; color: #64748B;">Tersisa 100 | buka pada 19 Maret 2026</p>
+                            </div>
+                            <span class="badge-available">Available</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket-group">
+                        <div class="ticket-group-header">
+                            <div>
+                                <h4>PUBLIK</h4>
+                                <p style="font-size: 12px; color: #64748B;">Terbuka untuk semua kalangan
+                                </p>
+                            </div>
+                            <button class="btn-buy">Beli Tiket</button>
+                        </div>
+                        <div class="ticket-variant">
+                            <div>
+                                <p style="font-weight: 700;">Rp160.000 (PRE-SALE)</p>
+                                <p style="font-size: 12px; color: #64748B;">Tersisa 300 | Buka pada 9 Mei sampai 23 Mei 2026</p>
+                            </div>
+                            <span class="badge-available">Available</span>
+                        </div>
+                        <div class="ticket-variant">
+                            <div>
+                                <p style="font-weight: 700;">Rp180.000 (REGULER)</p>
+                                <p style="font-size: 12px; color: #64748B;">Tersisa 500 | Buka pada 27 Mei sampai 19 Juni 2026</p>
+                            </div>
+                            <span class="badge-available">Available</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket-group">
+                        <div class="ticket-group-header" style="background: #FFFBEB; border-bottom-color: #FEF3C7;">
+                            <div>
+                                <h4 style="color: #92400E;">MAHASISWA BUDI LUHUR</h4>
+                                <p style="font-size: 12px; color: #B45309;">Hanya untuk mahasiswa Budi Luhur</p>
+                            </div>
+                            <button class="btn-buy" style="background: #92400E;">Vertifikasi</button>
+                        </div>
+                        <div class="ticket-variant">
+                            <div>
+                                <p style="font-weight: 700;">Rp140.000 (PRE-SALE)</p>
+                                <p style="font-size: 12px; color: #64748B;">Tersisa 300 | Buka pada 9 Mei sampai 23 Mei 2026</p>
+                            </div>
+                            <span class="badge-available" style="background: #FEF3C7; color: #92400E;">Available</span>
+                        </div>
+                        <div class="ticket-variant">
+                            <div>
+                                <p style="font-weight: 700;">Rp160.000 (REGULER)</p>
+                                <p style="font-size: 12px; color: #64748B;">Tersisa 500 | Buka pada 27 Mei sampai 19 Juni 2026</p>
+                            </div>
+                            <span class="badge-available" style="background: #FEF3C7; color: #92400E;">Available</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="snk" style="height: 500px;">
+                    <h2 class="section-title">Syarat & Ketentuan</h2>
+                    <td>
+                        <p><br>
+                            <strong>SYARAT &amp; KETENTUAN - Budi Luhur-Fest</strong><br>
+                        </p>
+
+                        <p>Dengan membeli tiket Nonton Pertunjukan Budi Luhur-Fest, Pembeli telah menyetujui
+                            semua Syarat dan Ketentuan yang berlaku. Segala bentuk pelanggaran atas ketentuan dari pihak
+                            Penyelenggara akan ditindak secara tegas.<br>
+
+                        <p>&nbsp;</p>
+
+                        <strong>KETENTUAN UMUM</strong>
+                        </p>
+
+                        <ul>
+                            <li>Tiket tersedia melalui website resmi The Chapter One<br>
+                            </li>
+                            <li>Dalam 1 kali transaksi:<br>
+                                Kategori Umum maksimal 5 tiket.<br>
+                                Kategori Pelajar maksimal 1 tiket.<br>
+
+                            </li>
+                            <li>Satu tiket berlaku untuk 1 orang dan 1 kali masuk.<br>
+
+                            </li>
+                            <li>Seluruh penjualan tiket bersifat final (tidak dapat ditukar atau diuangkan kembali).<br>
+
+                            </li>
+                            <li>Pembelian tiket Pertunjukan Budi Luhur-Fest Jakarta wajib menggunakan nama asli yang
+                                sesuai dengan kartu identitas resmi (KTP/SIM/Paspor/Kartu Keluarga/Kartu Pelajar). Data pada tiket
+                                tidak dapat diubah atau dimodifikasi.<br>
+
+                            </li>
+                            <li>Semua harga belum termasuk Biaya Admin 5%.<br>
+
+                            </li>
+                            <li>Tiket dijual secara langsung oleh Penyelenggara acara yaitu The Chapter One. Tiket apa
+                                pun yang dibeli oleh pelaku usaha atau pedagang yang melanggar
+                                Syarat &amp; Ketentuan penjualan tiket akan dibatalkan. Dengan menerima syarat dan
+                                ketentuan ini, Anda mengkonfirmasi bahwa Anda adalah konsumen.<br>
+
+                            </li>
+                            <li>Tiket tidak boleh digunakan untuk tujuan komersial seperti hadiah undian, kompetisi,
+                                atau kontes. Penjualan atau penggunaan tiket yang melanggar ketentuan ini dapat
+                                mengakibatkan pembatalan tiket tanpa pengembalian dana dan pemegang tiket akan ditolak
+                                masuk ke area acara. Penyelenggara tidak bertanggung jawab apabila tiket Anda hilang,
+                                dicuri, atau digunakan oleh orang lain.<br>
+
+                            </li>
+                            <li>Semua penjualan Tiket adalah final. Tiket yang telah terjual tidak dapat ditukar dan
+                                tidak dapat diuangkan kembali.<br>
+
+                            </li>
+                            <li>Tiket tidak dapat dipindahtangankan dengan alasan apapun.<br>
+                                <br>
+                                &nbsp;
+                            </li>
+                        </ul>
+
+                        <p><strong>VERIFIKASI DAN PENUKARAN TIKET</strong><br>
+                            TICKET EXCHANGE AND VERFICATION</p>
+
+                        <ul>
+                            <li>Proses verifikasi dan penukaran tiket dibuka 15 menit sebelum pertunjukan dimulai.<br>
+
+                            </li>
+                            <li>Penukaran e-tiket menjadi tiket fisik tidak dapat diwakilkan &amp; wajib membawa kartu
+                                identitas sesuai &nbsp;yang sudah terdaftar di situs resmi<br>
+
+                            </li>
+                            <li>Petugas berhak melakukan verifikasi tiket dan identitas di pintu masuk.<br>
+
+                            </li>
+                            <li>Tiket yang disalahgunakan untuk tujuan komersial (dijual ke pihak lain) akan dibatalkan
+                                tanpa pengembalian dana.<br>
+
+                            </li>
+                            <li>Pembeli tiket tunduk pada ketentuan verifikasi dan penukaran tiket yang berlaku di
+                                lokasi pertunjukan.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>KETENTUAN UNTUK PELAJAR</strong></p>
+
+                        <ul>
+                            <li>Tiket hanya dapat dibeli melalui website resmi The Chapter One. Tiket dapat digunakan untuk masuk ke
+                                Pertunjukan Budi Luhur-Fest.<br>
+
+                            </li>
+                            <li>1 (satu) transaksi maksimal 1 (satu) tiket.<br>
+                            </li>
+                            <li>Tiket berlaku untuk 1 (satu) orang Pemegang Tiket, untuk 1 (satu) kali masuk ke area
+                                acara Pertunjukan Budi Luhur-Fest Jakarta.<br>
+
+                            </li>
+                            <li>Pembelian tiket Pertunjukan Budi Luhur-Fest Jakarta wajib menggunakan nama asli yang
+                                sesuai dengan kartu identitas resmi (Kartu Identitas Pelajar Universitas Budi Luhur).
+                                Data pada tiket tidak dapat diubah atau dimodifikasi.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>BATASAN UMUR</strong></p>
+
+                        <ul>
+                            <li>Identitas (dengan foto) resmi yang dianggap berlaku adalah Kartu Tanda Penduduk bagi
+                                Warga Negara Indonesia, Surat Izin Mengemudi, Paspor, Kartu Pelajar/Mahasiswa, dan Kartu
+                                Identitas dari Negara asal bagi Warga Negara Asing.<br>
+
+                            </li>
+                            <li>Pengunjung berusia dibawah 6 tahun yang belum memiliki (Kartu Identitas Pelajar/KIA/KJP/KIP) 
+                                harus dengan pendampingan orang tua atau wali yang memiliki tiket dan orang tua atau wali.<br>
+
+                            </li>
+                            <li>Bukti identitas usia anak harus ditunjukkan di pintu masuk<em><i>.</i></em><br>
+                                <br>
+                                &nbsp;
+                            </li>
+                        </ul>
+
+                        <p><strong>KETENTUAN PENGUNJUNG ANAK</strong></p>
+
+                        <ul>
+                            <li>Anak yang tidak memiliki KIA/KJP/KIP/Kartu Pelajar akan masuk sebagai Kategori Publik atau Spesial, 
+                                dengan menunjukkan Kartu Keluarga (KK) sebagai identitas pendukung.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>LAYANAN KEBUTUHAN KHUSUS</strong></p>
+
+                        <ul>
+                            <li>Pemilik tiket berkebutuhan khusus dengan menggunakan kursi roda dapat menghubungi pihak
+                                Penyelenggara melalui Customer Service <a href="http://loket.com/tim"
+                                    rel="noopener noreferrer" target="_blank">The Chapter One</a><em><i>.</i></em><br>
+
+                            </li>
+                            <li>Pertunjukan ini menampilkan efek lampu flash dan pencahayaan intens, serta suara yang
+                                sangat keras yang dapat menyebabkan gangguan atau ketidaknyamanan bagi sebagian
+                                penonton.<br>
+
+                            </li>
+                            <li>Pemilik tiket memahami bahwa mereka memiliki kewajiban untuk mengambil langkah-langkah
+                                yang wajar untuk memastikan keselamatan mereka sendiri, dengan mempertimbangkan kondisi
+                                medis pribadi.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><br>
+                            <strong>INFORMASI PENONTON</strong>
+                        </p>
+
+                        <ul>
+                            <li>Jika kondisi acara saat itu mengalami gangguan cuaca seperti hujan maka pengunjung diharapkan membawa jas hujan dan sejenisnya.<br>
+
+                            </li>
+                            <li>Tidak ada penitipan barang.<br>
+
+                            </li>
+                            <li>Demi keamanan dan kenyamanan, dilarang membawa koper atau tas berukuran besar lainnya 
+                                ke area pertunjukan.<br>
+
+                            </li>
+                            <li>Penyelenggara tidak bertanggung jawab atas kelalaian pembeli tiket yang menyebabkan
+                                tiket yang telah dibeli jatuh ke tangan orang lain (atau berada dalam penguasaan orang
+                                lain) yang kemudian digunakan sebagai tanda masuk yang sah ke lokasi pertunjukan..<br>
+
+                            </li>
+                            <li>Apabila pertunjukan dibatalkan, tiket akan dibayarkan kembali menurut ketentuan
+                                penyelenggara. Biaya-biaya lain (yang dibebankan kepada pembeli melalui kartu
+                                kredit) tidak termasuk sebagai harga tiket yang akan dibayarkan kembali.<br>
+
+                            </li>
+                            <li>Penyelenggara berhak untuk melarang pengunjung untuk memasuki area Budi Luhur-Fest
+                                apabila pengunjung tidak memiliki tiket yang sah.<br>
+
+                            </li>
+                            <li>Penyelenggara berhak mengeluarkan pengunjung dari lokasi apabila dipandang perlu untuk
+                                alasan keamanan, kenyamanan pengunjung lainnya, serta demi menjamin kelancaran
+                                penyelenggaraan pertunjukan.<br>
+
+                            </li>
+                            <li>Penyelenggara tidak bertanggung jawab atas kompensasi dan/atau biaya tambahan apapun
+                                yang timbul akibat adanya pembatalan ataupun penundaan pertunjukan.<br>
+
+                            </li>
+                            <li>Penonton yang tidak berperilaku tertib, membuat keonaran ataupun berperilaku tidak
+                                patut, dan penonton yang menolak untuk mematuhi perintah/peringatan akan dikeluarkan
+                                dari lokasi tanpa diberikan pengembalian harga tiket.<br>
+                            </li>
+                            <li>Penyelenggara pendukung tidak bertanggung jawab atas peristiwa kehilangan, pencurian,
+                                atau pengrusakan barang ataupun kecelakaan yang terjadi di area manapun di dalam lokasi
+                                pada saat pertunjukanl dan karena sebab apapun.<br>
+
+                            </li>
+                            <li>Penyelenggara berhak melarang untuk masuk terhadap pengunjung manapun yang terindikasi
+                                sedang berada dalam keadaan mabuk, secara jelas berada dibawah pengaruh obat-obatan
+                                terlarang. Siapapun yang ditemukan membawa barang-barang yang melanggar hukum akan
+                                dilaporkan kepada polisi, dilarang untuk memasuki lokasi pertunjukan dan harga tiket
+                                tidak akan dikembalikan.<br>
+
+                            </li>
+                            <li>Penyelenggara tidak akan menggunakan atau menyebarluaskan data/informasi tentang pribadi
+                                pengunjung yang diberikan saat membeli tiket tanpa persetujuan pengunjung terlebih
+                                dahulu.<br>
+
+                            </li>
+                            <li>Penonton yang telah dikeluarkan dari lokasi pertunjukan tidak diperkenankan untuk masuk 
+                                kembali ke lokasi pertunjukan.<br>
+
+                            </li>
+                            <li>Untuk alasan keselamatan, Penyelenggara memiliki hak untuk menunda, membatalkan, atau
+                                menghentikan jalannya pertunjukan, menahan Pengunjung untuk tetap berada di lokasi
+                                pertunjukan untuk sementara waktu hingga pertunjukan berakhir; mengevakuasi sebagian
+                                atau keseluruhan Pengunjung dari lokasi pertunjukan dan juga berhak menolak Pengunjung
+                                untuk masuk ke lokasi pertunjukan meskipun telah memiliki tiket masuk yang sah tanpa ada
+                                kompensasi apapun kepada Pengunjung.<br>
+
+                            </li>
+                            <li>Penyelenggara berhak sewaktu-waktu untuk mengubah pengaturan waktu pertunjukan dan
+                                penataan penempatan pengunjung di dalam lokasi pertunjukan.<br>
+                            </li>
+                            <li>Penyelenggara memiliki hak untuk mengubah ataupun menambahkan syarat lain pada Syarat
+                                &amp; Ketentuan tanpa adanya pemberitahuan terlebih dahulu.<br>
+
+                            </li>
+                            <li>Pertunjukan&nbsp; diharapkan dapat berlangsung nyaman dan dapat dinikmati.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>BARANG-BARANG DILARANG</strong><br></p>
+
+                        <ul>
+                        
+                            <li>Dilarang membawa rokok, vape &amp; rokok elektronik, dan korek api.<br>
+
+                            </li>
+                            <li>Dilarang membawa alkohol dan narkoba.<br>
+
+                            </li>
+                            <li>Dilarang membawa kamera profesional dan semi-profesional / SLR / DSLR.<br>
+
+                            </li>
+                            <li>Dilarang membawa kamera dengan lensa yang dapat dilepas, kamera video, alat perekam, dan
+                                kamera aksi. Dilarang menggunakan flash untuk fotografi.<br>
+
+                            </li>
+
+                            <li>Dilarang membawa senter besar dan sinar laser.<br>
+                            </li>
+                            <li>Tidak disediakan tempat penitipan barang di lokasi pertunjukan.<br>
+                            </li>
+                            <li>Dilarang membawa senjata dalam bentuk apapun.<br>
+                            </li>
+                            <li>Dilarang membawa binatang dan hewan peliharaan.<br>
+                            </li>
+
+                            <li>Dilarang menyebarkan pamflet, atau brosur apapun tanpa persetujuan dari
+                                Penyelenggara.<br>
+
+                            </li>
+                            <li>Dilarang membawa benda apapun yang dapat digunakan untuk merusak ketertiban,
+                                membahayakan keselamatan pengunjung, dan/atau menimbulkan kerusakan pada manusia ataupun
+                                barang, berdasarkan keputusan mutlak dari petugas.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong>HAK ATAS PENGAMBILAN REKAMAN VIDEO ATAUPUN GAMBAR</strong></p>
+
+                        <ul>
+                            <li>Penyelenggara dan pihak terafiliasinya memiliki hak untuk memfilmkan, membuat rekaman,
+                                dan/atau mengambil foto-foto keadaan, kegiatan, dan/atau pernyataan-pernyataan
+                                dari pengunjung pertunjukan untuk keperluan penayangan pada televisi, gambar bergerak,
+                                internet, dan/atau penyiaran secara publik lainnya dan untuk tujuan apapun. Pengunjung
+                                dengan ini melepaskan dan membebaskan penyelenggara berikut seluruh pihak terafiliasinya
+                                dari segala klaim terkait kerusakan, kerugian, tanggung jawab, denda, serta dampak                                dampak lain apapun yang timbul baik secara langsung maupun tidak langsung dari kegiatan
+                                memfilmkan, merekam, dan/atau mengambil foto-foto pada saat pertunjukan berlangsung.<br>
+
+                            </li>
+                            <li>Dilarang melemparkan barang ke lokasi teater, khususnya benda padat karena akan melukai
+                                orang lain.<br>
+
+                            </li>
+                        </ul>
+
+                        <p>&nbsp;</p>
+
+                        <p>Selamat Menikmati Pertunjukan Budi Luhur-Fest .<br>
+                            Enjoy The Theater Budi Luhur-Fest!<br>
+                            ______________________________________________________________________________</p>
+                    </td>
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <div class="floating-card">
+                    <img
+                        src="https://instagram.fcgk3-4.fna.fbcdn.net/v/t51.82787-15/675462134_18068768030447917_4963508701944061702_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg4NDc5OTgzNzMxMzY3Njc5OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwNzl4NTY1LnNkci5DMyJ9&_nc_ohc=c9VsTP63FJwQ7kNvwE42IlQ&_nc_oc=Adr2q-MuAHtGuUyAun1pOct_qsqxbNWBCl_pxnsGT9X6O7Oq-xflSitpew2jC5s2XETEfUt9deUCB9p5UTxbfl5R&_nc_ad=z-m&_nc_cid=1101&_nc_zt=23&_nc_ht=instagram.fcgk3-4.fna&_nc_gid=Phqh6rMa2xvriF7iPQOtiQ&_nc_ss=7a22e&oh=00_Af3zOaW-9tNXeWYN3bzrimq4KffuxABGAdWykITBrV2cHw&oe=69F5B36E">
+                    <div class="card-body">
+                        <h3 style="font-size: 18px; margin-bottom: 12px;">Budi Luhur-Fest</h3>
+                        <p style="font-size: 13px; color: #64748B;">📍 Universitas Budi Luhur<br>📅 21 Juni 2026<br>🎡
+                            Hiburan • Konser</p>
+                        <div class="org-box">
+                            <div class="org-logo">TCO</div>
+                            <div>
+                                <p style="font-size: 10px; color: #94A3B8;">Penyelenggara</p>
+                                <p style="font-size: 12px; font-weight: 700;">The Chapter One</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
